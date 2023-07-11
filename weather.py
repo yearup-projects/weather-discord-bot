@@ -1,6 +1,5 @@
 import os
 import aiohttp
-import asyncio
 from dotenv import load_dotenv
 
 
@@ -16,8 +15,8 @@ headers = {
 }
 
 
-async def get_weather_data(zip_code):
-    query = {'q': zip_code}
+async def get_weather_data(query):
+    query = {'q': query}
 
     async with aiohttp.ClientSession() as session:
         async with session.get(BASE_URL, headers=headers,
@@ -27,10 +26,3 @@ async def get_weather_data(zip_code):
                 return weather_data
             else:
                 return None
-
-
-async def main():
-    print(await get_weather_data(10461))
-
-
-asyncio.run(main())
