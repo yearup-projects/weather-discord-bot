@@ -16,11 +16,11 @@ headers = {
 
 
 async def get_weather_data(query):
-    query = {'q': query}
+    _query = {'q': query}
 
     async with aiohttp.ClientSession() as session:
         async with session.get(BASE_URL, headers=headers,
-                               params=query) as response:
+                               params=_query) as response:
             if response.status == 200:
                 weather_data = await response.json()
                 print(weather_data)
