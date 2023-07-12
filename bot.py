@@ -18,8 +18,7 @@ async def on_ready():
     print(f'We have logged in as {bot.user}')
 
 
-@bot.slash_command(description='Get the current weather', name='current',
-                   guild_ids=GUILDS)
+@bot.slash_command(description='Get the current weather', name='current')
 async def get_weather(interaction: nextcord.Interaction, query: str):
     data = await get_weather_data(query)
     embed = make_embed(data)
