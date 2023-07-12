@@ -22,9 +22,9 @@ async def on_ready():
                    guild_ids=GUILDS)
 async def get_weather(interaction: nextcord.Interaction, query: str):
     data = await get_weather_data(query)
-    print(data)
     embed = make_embed(data)
-    await interaction.response.send_message(embed=embed)
+    is_hidden = embed.title == 'Invalid Request'
+    await interaction.response.send_message(embed=embed, ephemeral=is_hidden)
 
 
 if __name__ == '__main__':

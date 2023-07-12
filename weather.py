@@ -23,6 +23,7 @@ async def get_weather_data(query):
                                params=query) as response:
             if response.status == 200:
                 weather_data = await response.json()
+                print(weather_data)
                 return weather_data
             else:
                 return None
